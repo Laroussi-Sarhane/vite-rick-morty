@@ -1,30 +1,58 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import axios from 'axios';
+import { store } from './data/store';
+
+import Header from './components/Header.vue';
+import Main from './components/Main.vue';
+export default {
+  components:{
+    Header,
+    Main
+  },
+  data(){
+    return{
+      store,
+    }
+  },
+  methods:{
+    getApi(){
+      console.log('GET API')
+      console.log(this.store);
+      axios.get(this.store.apiUrl, {
+        params:{
+          num : 10 ,
+          offset: 10
+
+        }
+
+      })
+      .then(result =>{
+        console.log(result.data.results);
+        this.store.cardsList = result.data.results;
+        console.log(this.store.cardsList);
+
+
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+    }
+  },
+  mounted(){
+    this.getApi()
+  },
+  
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Header/>
+  <Main/>
+  
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss" scoped>
+@use './assets/scss/main.scss';
+
+
 </style>
