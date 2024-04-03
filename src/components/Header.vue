@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div>
-    header 
+    <h1 class=" text-center "> vite rick & morty</h1>
   </div>
   
 </template>
