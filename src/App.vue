@@ -20,6 +20,8 @@ export default {
       console.log(this.store);
       axios.get(this.store.apiUrl, {
         params:{
+          name: 'rick',
+          status:'',
           num : 10 ,
           offset: 10
 
@@ -46,7 +48,8 @@ export default {
 </script>
 
 <template>
-  <Header/>
+
+  <Header @startSearch="getApi" />
   <Main/>
   
 </template>
