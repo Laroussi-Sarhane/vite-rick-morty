@@ -19,7 +19,11 @@ export default {
     
     <div>
       <div class="input-group mb-3">
-    <input v-model.trim="store.nameToSearch" type="text" class="form-control" placeholder="cerca personaggio " aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <input v-model="store.nameToSerach" 
+    type="text" class="form-control" 
+    placeholder="cerca personaggio "
+     aria-label="Recipient's username" 
+     aria-describedby="basic-addon2">
     <button @click="$emit('startSearch')" class="input-group-text  btn btn-warning" id="basic-addon2">cerca</button>
   </div>
     </div>

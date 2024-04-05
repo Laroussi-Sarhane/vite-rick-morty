@@ -11,7 +11,7 @@ export default {
   },
   data(){
     return{
-      store,
+      store
     }
   },
   methods:{
@@ -20,7 +20,7 @@ export default {
       console.log(this.store);
       axios.get(this.store.apiUrl, {
         params:{
-          name: 'rick',
+          name: store.nameToSerach,
           status:'',
           num : 10 ,
           offset: 10
